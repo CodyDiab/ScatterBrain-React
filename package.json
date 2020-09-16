@@ -1,0 +1,19 @@
+{
+  "name": "scatterbrain-react",
+  "version": "1.0.0",
+  "description": "Chrome App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodyDiab/ScatterBrain-React.git"
+  },
+  "author": "Cody Diab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodyDiab/ScatterBrain-React/issues"
+  },
+  "homepage": "https://github.com/CodyDiab/ScatterBrain-React#readme"
+}
