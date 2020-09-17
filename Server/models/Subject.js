@@ -1,6 +1,7 @@
 const {Schema} = require('mongoose');
 
 //import resource schema
+const resourceSchema= require('./Resource')
 
 const subjectSchema = new Schema(
     {

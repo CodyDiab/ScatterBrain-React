@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 //inport subject schema
-
+const subjectSchema = require('./Subject')
 
 const userSchema = new Schema(
     {
