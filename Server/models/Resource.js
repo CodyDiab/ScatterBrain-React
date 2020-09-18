@@ -1,4 +1,5 @@
 const {Schema} = require('mongoose');
+const moment = require('moment');
 
 const resourceSchema = new Schema(
     {
@@ -12,7 +13,14 @@ const resourceSchema = new Schema(
         },
         notes: {
             type:String,
-        }
+        },
+        
+        createdAt: {
+                type: Date,
+                default: Date.now,
+                get: timestamp => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a')
+    
+       }
     }
 )
 

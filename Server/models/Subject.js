@@ -1,5 +1,5 @@
-const {Schema} = require('mongoose');
-
+const {Schema,model} = require('mongoose');
+const moment = require('moment');
 //import resource schema
 const resourceSchema= require('./Resource')
 
@@ -22,4 +22,5 @@ subjectSchema.virtual('resourceCount').get(function () {
     return this.resources.length;
 })
 
+const Subject = model('Subject',subjectSchema)
 module.export = subjectSchema;
