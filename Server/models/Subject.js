@@ -31,4 +31,4 @@ subjectSchema.virtual('resourceCount').get(function () {
 })
 
 const Subject = model('Subject',subjectSchema)
-module.export = subjectSchema;
+module.exports = Subject;
