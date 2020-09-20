@@ -12,6 +12,14 @@ const subjectSchema = new Schema(
         resources: [resourceSchema],
     },
     {
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timestamp => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a')
+
+        }
+    },
+    {
         toJSON: {
           virtuals: true,  
         },

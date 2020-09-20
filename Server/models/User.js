@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 //inport subject schema
-const subjectSchema = require('./Subject')
+// const subjectSchema = require('./Subject')
 
 const userSchema = new Schema(
     {
@@ -22,7 +22,10 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        subjects: [subjectSchema],
+        subjects: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Subject'
+        }],
     },
     {
         toJSON: {
