@@ -51,5 +51,19 @@ module.exports = {
         })
         .catch(err => res.status(400).json(err));
     },
+    //delete subject
+    async deleteSubject({params}, res) {
+        Subject.findOneAndDelete({_id: params.id})
+        .then(subjectData => {
+            if(!subjectData){
+                res.status(404).json({message: 'No subject with this id'});
+            }
+            res.json(subjectData);
+        })
+        .catch(err => res.status(400).json(err));
+    },
+    //add resource
+    //edit resource
+    //delete resource
 
 }
