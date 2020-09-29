@@ -9,6 +9,7 @@ type User {
 }
 type Subject {
     _id: ID
+    userId: String
     title: String
     createdAt: String
     resources: [Resource]
@@ -30,7 +31,7 @@ type Auth {
 type Query {
     me: User
     user(username: String!): User
-    subjects(username: String!):[Subject]
+    subjects(userId: String!):[Subject]
     subject(_id: ID!): Subject
 }
 type Mutation {

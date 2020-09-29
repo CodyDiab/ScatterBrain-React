@@ -4,23 +4,28 @@ const moment = require('moment');
 const resourceSchema= require('./Resource')
 
 const subjectSchema = new Schema(
-    {
+    {   
+        userId:{
+           type: String,
+           rewuired:true
+        },
         title: {
             type: String,
             required: true,
         },
         resources: [resourceSchema],
-    },
-    {
+    
+    
         createdAt: {
             type: Date,
             default: Date.now,
             get: timestamp => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a')
 
         }
+    
     },
     {
-        toJSON: {
+     toJSON: {
           virtuals: true,  
         },
     }
