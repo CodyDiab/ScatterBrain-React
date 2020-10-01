@@ -60,12 +60,29 @@ const resolvers = {
            return{ token, user};
         },
         addSubject: async(parent, args, context) => {
+            if(context.user) {
+                const subject = await Subject.create({...args,userId: context.user._id});
+                await User.findByIdAndUpdate(
+                    {_id: context.user._id},
+                    {$push: {subjects: subject._id}},
+                    {new: true}
+                );
+            }
 
         },
         editSubject: async(parent, args, context)=> {
 
         },
         addResource: async (parent, args,context) => {
+            if(context.user) {
+                const updatedSubject = await Subject.findOneAndUpdate(
+                    {userId: context.user._id},
+                    {$addToSet: {resources: args}},
+                    {new:true}
+                );
+                return updatedSubject;
+            }
+            throw new AuthenticationError('You need to be logged in!');
 
         },
         editResource: async(parent, args, context)=> {
