@@ -93,6 +93,12 @@ const resolvers = {
 
         },
         editResource: async(parent, args, context)=> {
+            if(context.user) {
+                const updateSubject = await Subject.findByIdAndUpdate(
+                   {userId: context.user._id},
+                   {}  
+                )
+            }
 
         },
         deleteSubject: async(parent, args, context)=> {
