@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const {User,Subject} = require("../models/User");
+const {User,Subject} = require("../models");
 const {signToken} = require('../utils/auth');
 
 // create user
@@ -42,7 +42,7 @@ const resolvers = {
     },
     Mutation: {
         addUser: async(parent,args)=> {
-            const user = await Uswer.create(args);
+            const user = await User.create(args);
             const token = signToken(user);
             return{ token, user};
 
@@ -71,6 +71,13 @@ const resolvers = {
 
         },
         editSubject: async(parent, args, context)=> {
+            if(context.user) {
+                const updatedSubject = await Subject.findOneAndUpdate({userId: context.user._id},{...args},{new:true});
+              
+                return updatedSubject;
+            }
+
+            throw new AuthenticationError('Not logged in');
 
         },
         addResource: async (parent, args,context) => {

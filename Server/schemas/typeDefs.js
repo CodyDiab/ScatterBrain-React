@@ -38,9 +38,12 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addSubject(title: String!):Subject
-    addResource(title: String!,url: String!,notes: String!)Subject
+    editSubject(title: String):Subject
+    addResource(title: String!,url: String!,notes: String):Subject
+    editResource(title: String!,url:String!,notes: String):Subject
     deleteSubject(_id: ID!):Subject
     deleteResource(_id: ID!):Subject
-}
+ }
 
 `
+module.exports = typeDefs;
