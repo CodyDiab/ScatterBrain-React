@@ -1,21 +1,47 @@
 const express = require('express');
-const mongoose = require('mongoose');
+// import ApolloServer
+const { ApolloServer } = require('apollo-server-express');
+const { authMiddleware } = require('./utils/auth');
+// require('dotenv').config()
+const path = require('path');
 
-const app = express();
+
+// import our typeDefs and resolvers
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+const { log } = require('console');
+
 const PORT = process.env.PORT || 3001;
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-app.use(require('./routes'));
-
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/socialnet', {
-    useFindAndModify: false,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+const app = express();
+// create a new Apollo server and pass in our schema data
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: authMiddleware
 });
-// Use this to log mongo queries being executed!
-mongoose.set('debug', true);
 
-app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+// integrate our Apollo server with the Express application as middleware
+server.applyMiddleware({ app });
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Serve up static assets
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+
+ 
+
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    // log where we can go to test our GQL API
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+  });
+});
