@@ -2,7 +2,7 @@ const {Schema} = require('mongoose');
 const moment = require('moment');
 
 const resourceSchema = new Schema(
-    {
+    {   
         title:{
             type: String,
             required: true,
