@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Subject } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
@@ -22,6 +22,18 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('subjects')
             },
+        subjects: async ( parent,args,context) => {
+            if(context.user) {
+            
+            const subjectsData = Subject.find({userId: context.user._id}).sort({createdAt:-1})
+            return subjectsData;
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        subject: async (parent, {_id}) => {
+            return Subject.findOne({_id})
+              .populate('resources')
+        }
 
     },
     Mutation: {

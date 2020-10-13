@@ -7,7 +7,7 @@ const subjectSchema = new Schema(
     {   
         userId:{
            type: String,
-           rewuired:true
+           required:true
         },
         title: {
             type: String,
