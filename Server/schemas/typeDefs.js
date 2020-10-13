@@ -7,11 +7,27 @@ type User {
     _id: ID
     username: String
     email: String
+    subjects:[Subject]
     
 }
 type Auth {
     token: ID!
     user: User
+}
+type Subject {
+    _id: ID
+    title: String
+    createdAt: String
+    resources: [Resource]
+
+}
+type Resource {
+    _id: ID
+    title:String
+    notes:String
+    url: String
+    createdAt: String
+
 }
 
 type Query {
