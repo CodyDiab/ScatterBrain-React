@@ -26,12 +26,12 @@ function App() {
   return (
   <ApolloProvider client={client}>
   <Router>
-   <div>
+   
       <Switch>
-       <Route exact path='/' component={Homepage}/>
-       {/* <Route exact path='/' component={Login}/> */}
+       {/* <Route exact path='/' component={Homepage}/> */}
+       <Route exact path='/' component={Login}/>
       </Switch>
-   </div>
+   
    </Router>
    </ApolloProvider>
   );

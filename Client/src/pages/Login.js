@@ -7,7 +7,7 @@ const Login = () => {
 <div className="login-splash">
     <div className="title-login">
         <h1 className="main-title">ScatterBrain 
-        <img className="logo" scr={require("../assets/logoscatterbrain.svg")} type="image/svg+xml" alt="logo"></img>
+        <img className="logo" src={require("../assets/logoscatterbrain.svg")} type="image/svg+xml" alt=""></img>
         </h1>
     </div>
     <div className="form-container">

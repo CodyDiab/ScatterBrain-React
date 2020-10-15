@@ -1,6 +1,8 @@
 @charset "utf-8";
-@import "../../node_modules/bulma/bulma.sass";
+// @import "../../node_modules/bulma/bulma.sass";
+@import "../../node_modules/material-design-lite/material.min.css";
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "./login-splash";
 @import "./modal";
 @import "./subject-card";
@@ -23,7 +25,7 @@ $btnColor: #066fa0b6 ;
 	from { background-position: 150%; }
 	to { background-position: 200%; }
 }
-body{
+#root{
     height: 100%;
     @include flexCenter(column, url(../assets/logoscatterbrain.svg) );
     font-family: "Poppins", sans-serif;
@@ -125,12 +127,12 @@ header{
 
 }
 
-@import "../../node_modules/bulma/sass/utilities/_all.sass";
-@import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/elements/button.sass";
-@import "../../node_modules/bulma/sass/elements/container.sass";
-@import "../../node_modules/bulma/sass/elements/title.sass";
-@import "../../node_modules/bulma/sass/form/_all.sass";
-@import "../../node_modules/bulma/sass/components/navbar.sass";
-@import "../../node_modules/bulma/sass/layout/hero.sass";
-@import "../../node_modules/bulma/sass/layout/section.sass";
+// @import "../../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../../node_modules/bulma/sass/base/_all.sass";
+// @import "../../node_modules/bulma/sass/elements/button.sass";
+// @import "../../node_modules/bulma/sass/elements/container.sass";
+// @import "../../node_modules/bulma/sass/elements/title.sass";
+// @import "../../node_modules/bulma/sass/form/_all.sass";
+// @import "../../node_modules/bulma/sass/components/navbar.sass";
+// @import "../../node_modules/bulma/sass/layout/hero.sass";
+// @import "../../node_modules/bulma/sass/layout/section.sass";
