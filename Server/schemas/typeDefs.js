@@ -16,6 +16,7 @@ type Auth {
 }
 type Subject {
     _id: ID
+    userId:String
     title: String
     createdAt: String
     resources: [Resource]
@@ -33,11 +34,20 @@ type Resource {
 type Query {
     me: User
     user(username: String!): User
+    subjects(userId: String): [Subjects]
+    subject(_id: ID!): Subject
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addSubject(title: String!,userId: String!):Subject
+    deleteSubject(_id: ID!):Subject
+    editSubject(title: String!):Subject
+    addResource(subjectId: ID!,title: String!,url:String,notes: String):Subject
+    deleteResource(_id: ID!):Subject
+    editResource(_id: ID!,title: String!,url:String,notes: String):Subject
+
 
 }
 
