@@ -1,51 +1,30 @@
-import React from 'react';
+import React,{useState} from 'react';
+import Auth from '../utils/auth';
 
+// import { useMutation } from '@apollo/react-hooks';
+// import { ADD_USER } from '../utils/mutations';
+
+import LoginForm from '../components/LoginForm'
+import SignupForm from '../components/SignupForm'
 
 const Login = () => { 
+   
+  const [signUp,toggleSignUp] = useState(true);
 
+
+   if(signUp) {
     return (
-<div className="login-splash">
-    <div className="title-login">
-        <h1 className="main-title">ScatterBrain 
-        <img className="logo" src={require("../assets/logoscatterbrain.svg")} type="image/svg+xml" alt=""></img>
-        </h1>
-    </div>
-    <div className="form-container">
-    <form className="login-form form">
-        <div>
-         
-          <input type="text" id="email-login" placeholder="Email" ></input>
-        </div>
-        <div>
-         
-          <input type="password" id="password-login" placeholder="Password"></input>
-        </div>
-        <div>
-            <input type="submit"className="fadeIn fourth" value="Log In"></input>
-        </div>
-      
-      </form>
-      <form className="signup-form form">
-        <div>
-         
-          <input type="text" id="username-signup" placeholder="Username" ></input>
-        </div>
-        <div>
-          
-          <input type="text" id="email-signup" placeholder="Email"></input>
-        </div>
-        <div>
-         
-          <input type="password" id="password-signup" placeholder="Password" ></input>
-        </div>
-        <div>
-            <input type="submit"className="fadeIn fourth" value="Sign Up"></input>
-        </div>
-      </form>
-    </div>
-</div>
+      <>
+     <SignupForm/>
+     <button onClick={toggleSignUp(false)}>Or Login</button>
+     </>
     )
 
+    }else{
+    return(
+      <LoginForm/>
+    )
+    }
 }
 
 export default Login;
